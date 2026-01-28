@@ -10,14 +10,128 @@ header {
   background: #222;
   color: #fff;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1rem 0 0 0;
+  position: relative;
 }
 
 .logo {
   width: 100px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
+h1, header p {
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem;
+  margin: 0.5rem 0;
+}
+
+/* Estilos para el carrusel - REDUCIDO */
+.carrusel {
+  position: relative;
+  width: 100%;
+  height: 250px; /* Reducido de 400px */
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.carrusel-contenedor {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carrusel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carrusel-slide.activo {
+  opacity: 1;
+}
+
+.carrusel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Cambiado de cover a contain para mostrar imagen completa */
+  display: block;
+  background-color: #111; /* Fondo oscuro para las imágenes */
+}
+
+/* Controles del carrusel - AJUSTADOS */
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem; /* Reducido */
+  cursor: pointer;
+  font-size: 1.2rem; /* Reducido */
+  z-index: 10;
+  transition: background 0.3s ease;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrusel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carrusel-btn.anterior {
+  left: 15px;
+}
+
+.carrusel-btn.siguiente {
+  right: 15px;
+}
+
+/* Indicadores del carrusel - AJUSTADOS */
+.carrusel-indicadores {
+  position: absolute;
+  bottom: 10px; /* Reducido */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Reducido */
+  z-index: 10;
+}
+
+.carrusel-indicador {
+  width: 10px; /* Reducido */
+  height: 10px; /* Reducido */
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  padding: 0;
+}
+
+.carrusel-indicador:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.carrusel-indicador.activo {
+  background: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* El resto de los estilos permanece igual */
 nav {
   background: #ffcc00;
   padding: 1rem;
@@ -97,7 +211,6 @@ h2 {
   transform: scale(1.05);
 }
 
-
 form {
   display: flex;
   flex-direction: column;
@@ -124,4 +237,35 @@ footer {
   padding: 1rem;
   background: #222;
   color: #fff;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .carrusel {
+    height: 200px; /* Aún más pequeño en móviles */
+  }
+  
+  .carrusel-btn {
+    width: 35px;
+    height: 35px;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+  }
+  
+  .carrusel-btn.anterior {
+    left: 10px;
+  }
+  
+  .carrusel-btn.siguiente {
+    right: 10px;
+  }
+  
+  .carrusel-indicadores {
+    bottom: 5px;
+  }
+  
+  .carrusel-indicador {
+    width: 8px;
+    height: 8px;
+  }
 }
