@@ -6,13 +6,90 @@ body {
   color: #333;
 }
 
-header {
-  background: #ffffff; /* Cambiado a blanco */
-  color: #333;
-  text-align: center;
-  padding: 1rem 0 0 0;
+/* Estilos para el nuevo diseño del header */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
   position: relative;
-  border-bottom: 1px solid #ddd; /* Añadido borde para separación */
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin: 0;
+  position: static;
+  z-index: 2;
+}
+
+.header-text {
+  text-align: left;
+  padding-left: 1rem;
+  flex: 1;
+}
+
+.header-text h1, 
+.header-text p {
+  position: static;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+  color: #333;
+}
+
+.header-text h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.header-text p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Ajusta el header existente para quitar el padding original */
+header {
+  background: #ffffff;
+  color: #333;
+  position: relative;
+  border-bottom: none; /* Se eliminó porque ahora está en .header-container */
+  padding: 0;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    width: 60px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header-text {
+    text-align: center;
+    padding-left: 0;
+  }
+  
+  .header-text h1 {
+    font-size: 1.3rem;
+  }
+  
+  .header-text p {
+    font-size: 0.8rem;
+  }
+  
+  /* Ajusta el carrusel para que comience después del header */
+  .carrusel {
+	  margin-top: 0;
+  }
+}
 }
 
 .logo {
