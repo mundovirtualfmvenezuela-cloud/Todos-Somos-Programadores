@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Streaming con controles y grabación</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      display: grid;
+      place-items: start;
+      gap: 1.25rem;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+    header h1 {
+      margin: 0 0 .25rem;
+      font-size: 1.5rem;
+    }
+    header p {
+      margin: 0;
+      color: #8b949e;
+    }
+    .card {
+      border: 1px solid #30363d;
+      border-radius: .75rem;
+      padding: 1rem;
+      background: #161b22;
+      max-width: 720px;
+      width: 100%;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: .75rem;
+    }
+    button {
+      padding: .6rem .9rem;
+      border-radius: .5rem;
+      border: 1px solid #30363d;
+      background: #21262d;
+      color: #c9d1d9;
+      cursor: pointer;
+      transition: background .15s ease, transform .02s ease;
+    }
+    button:hover { background: #30363d; }
+    button:active { transform: translateY(1px); }
+    button[disabled] {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+    .status {
+      font-variant-numeric: tabular-nums;
+      color: #8b949e;
+      margin-top: .5rem;
+    }
+    .rec {
+      color: #f78166;
+      font-weight: 600;
+    }
+    a.download {
+      display: inline-block;
+      margin-top: .75rem;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    a.download:hover { text-decoration: underline; }
+    footer {
+      color: #8b949e;
+      font-size: .9rem;
+      max-width: 720px;
+    }
+    code { color: #58a6ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Streaming de radio</h1>
+    <p>URL: https://laradio.stream/proxy/calient1/stream</p>
+  </header>
+
+  <section class="card">
+    <h2>Controles de reproducción</h2>
+
+    <!-- Elemento de audio (sin controles nativos para manejar estados nosotros) -->
+    <audio id="player" preload="none" crossorigin="anonymous"></audio>
+
+    <div class="controls">
+      <button id="playBtn">Reproducir</button>
+      <button id="pauseBtn" disabled>Pausar</button>
+      <button id="resumeBtn" disabled>Continuar</button>
+      <button id="stopBtn" disabled>Detener</button>
+    </div>
+
+    <div class="status" id="playStatus">Estado: inactivo</div>
+  </section>
+
+  <section class="card">
+    <h2>Grabación del streaming</h2>
+    <div class="controls">
+      <button id="startRecBtn" disabled>Iniciar grabación</button>
+      <button id="stopRecBtn" disabled>Detener grabación</button>
+    </div>
+    <div class="status" id="recStatus">Grabación: inactiva</div>
+    <a id="downloadLink" class="download" href="#" download="streaming.webm" hidden>Descargar grabación</a>
+  </section>
+
+  <footer>
+    <p>
+      Nota: La grabación usa Web Audio + MediaRecorder. Si el origen bloquea CORS o el navegador no permite
+      <code>MediaElementSource</code> con este streaming, la grabación podría fallar. En móviles, es posible que necesites
+      presionar “Reproducir” antes de poder grabar.
+    </p>
+  </footer>
+
+  <script>
+    // URL del streaming
+    const STREAM_URL = "https://laradio.stream/proxy/calient1/stream";
+
+    // Elementos del DOM
+    const player = document.getElementById("player");
+    const playBtn = document.getElementById("playBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const resumeBtn = document.getElementById("resumeBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const playStatus = document.getElementById("playStatus");
+
+    const startRecBtn = document.getElementById("startRecBtn");
+    const stopRecBtn = document.getElementById("stopRecBtn");
+    const recStatus = document.getElementById("recStatus");
+    const downloadLink = document.getElementById("downloadLink");
+
+    // Web Audio + MediaRecorder setup
+    let audioCtx = null;
+    let srcNode = null;
+    let destNode = null;
+    let mediaRecorder = null;
+    let recordedChunks = [];
+
+    // Helpers de UI
+    function setPlayState(stateText) {
+      playStatus.textContent = "Estado: " + stateText;
+    }
+    function setRecState(stateText) {
+      recStatus.innerHTML = "Grabación: " + stateText;
+    }
+    function enablePlaybackButtons({ play, pause, resume, stop }) {
+      playBtn.disabled = !play;
+      pauseBtn.disabled = !pause;
+      resumeBtn.disabled = !resume;
+      stopBtn.disabled = !stop;
+    }
+    function enableRecordButtons({ start, stop }) {
+      startRecBtn.disabled = !start;
+      stopRecBtn.disabled = !stop;
+    }
+
+    // Inicializa el elemento de audio
+    player.src = STREAM_URL;
+
+    // Reproducir
+    playBtn.addEventListener("click", async () => {
+      try {
+        // Algunos navegadores requieren user gesture antes de crear AudioContext
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          srcNode = audioCtx.createMediaElementSource(player);
+          destNode = audioCtx.createMediaStreamDestination();
+          // Conectar al destino (para grabación) y a la salida (para escuchar)
+          srcNode.connect(audioCtx.destination);
+          srcNode.connect(destNode);
+        }
+
+        await player.play();
+        setPlayState("reproduciendo");
+        enablePlaybackButtons({ play: false, pause: true, resume: false, stop: true });
+        // Una vez sonando, permitir iniciar grabación
+        enableRecordButtons({ start: true, stop: false });
+      } catch (err) {
+        console.error("Error al reproducir:", err);
+        setPlayState("error al reproducir (ver consola)");
+      }
+    });
+
+    // Pausar
+    pauseBtn.addEventListener("click", () => {
+      try {
+        player.pause();
+        setPlayState("pausado");
+        enablePlaybackButtons({ play: false, pause: false, resume: true, stop: true });
+      } catch (err) {
+        console.error("Error al pausar:", err);
+        setPlayState("error al pausar (ver consola)");
+      }
+    });
+
+    // Continuar
+    resumeBtn.addEventListener("click", async () => {
+      try {
+        await player.play();
+        setPlayState("reproduciendo");
+        enablePlaybackButtons({ play: false, pause: true, resume: false, stop: true });
+      } catch (err) {
+        console.error("Error al continuar:", err);
+        setPlayState("error al continuar (ver consola)");
+      }
+    });
+
+    // Detener
+    stopBtn.addEventListener("click", () => {
+      try {
+        player.pause();
+        // Al detener, vaciamos el src para cortar la conexión; luego podemos reasignarlo
+        player.src = "";
+        player.src = STREAM_URL;
+        setPlayState("detenido");
+        enablePlaybackButtons({ play: true, pause: false, resume: false, stop: false });
+        // Detener grabación si estaba activa
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+        enableRecordButtons({ start: false, stop: false });
+      } catch (err) {
+        console.error("Error al detener:", err);
+        setPlayState("error al detener (ver consola)");
+      }
+    });
+
+    // Iniciar grabación
+    startRecBtn.addEventListener("click", () => {
+      try {
+        if (!destNode) {
+          setRecState("no disponible (inicia reproducción primero)");
+          return;
+        }
+
+        recordedChunks = [];
+        mediaRecorder = new MediaRecorder(destNode.stream, {
+          mimeType: "audio/webm;codecs=opus"
+        });
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: "audio/webm" });
+          const url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.hidden = false;
+          // Timestamp para nombre de archivo
+          const ts = new Date().toISOString().replace(/[:.]/g, "-");
+          downloadLink.download = `streaming-${ts}.webm`;
+          setRecState("<span class='rec'>finalizada</span> — archivo listo para descargar");
+          enableRecordButtons({ start: true, stop: false });
+        };
+
+        mediaRecorder.start(1000); // recolecta datos cada 1s
+        setRecState("<span class='rec'>grabando…</span>");
+        enableRecordButtons({ start: false, stop: true });
+        downloadLink.hidden = true;
+      } catch (err) {
+        console.error("Error al iniciar grabación:", err);
+        setRecState("error al iniciar (ver consola)");
+      }
+    });
+
+    // Detener grabación
+    stopRecBtn.addEventListener("click", () => {
+      try {
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+          setRecState("deteniendo…");
+        }
+      } catch (err) {
+        console.error("Error al detener grabación:", err);
+        setRecState("error al detener (ver consola)");
+      }
+    });
+
+    // Limpieza al cerrar la página
+    window.addEventListener("beforeunload", () => {
+      try {
+        player.pause();
+        player.src = "";
+        if (mediaRecorder && mediaRecorder.state !== "inactive") mediaRecorder.stop();
+        if (audioCtx) audioCtx.close();
+      } catch {}
+    });
+  </script>
+</body>
+</html>

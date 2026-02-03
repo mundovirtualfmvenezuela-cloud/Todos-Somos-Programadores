@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Texto deslizante</title>
+  <style>
+    :root {
+      --bg: #1fa444;        /* Verde */
+      --text: #ffffff;      /* Blanco */
+      --speed: 60s;         /* Ajusta la velocidad del deslizamiento */
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      overflow: hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    .marquee {
+      position: relative;
+      width: 100vw;
+      white-space: nowrap;
+    }
+    .marquee__track {
+      display: inline-block;
+      padding-left: 100vw; /* Empieza fuera de la pantalla por la derecha */
+      color: var(--text);
+      font-weight: 700;
+      font-size: clamp(24px, 6vw, 64px);
+      letter-spacing: 0.02em;
+      animation: scroll var(--speed) linear infinite;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee" aria-label="Texto deslizante">
+    <div class="marquee__track">YouTube: mundovirtualfm --- Instagram: mundovirtualfm --- TikTok: mundovirtualfm --- X(twitter): mundovirtualfm1 --- email: mundovirtualfmvenezuela@gmail.com --- Whatsapp: canal Mundo Virtual --- Telegram: mundovirtualfm1 --- +58 412 390 71 29 </div>
+  </div>
+</body>
+</html>
