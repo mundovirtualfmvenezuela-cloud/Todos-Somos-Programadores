@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Elabore talonarios de rifas</title>
+		<link href="CartonesDeRifa.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+		<script src="CartonesDeRifa.js"></script>
+    </head>
+    <body >
+        <div id="datos">
+			Cantidad de n&uacute;meros para la rifa: <input type="number"  id="TamRifa" />
+<br />
+Cantidad de cartones a usar en la rifa: <input type="number" id="cartones" /><br />
+Cantidad de cartones por fila: <input type="number" id="inARow" /><br />
+Cantidad de numeros en cada carton por fila: <input type="number" id="inARowInside" />
+<br />
+<input type="button" onclick="pinta_tablamayor();" value="Crear cartones de rifa" />
+<input type="button" onclick="exportTableToExcel('ParaExcel');" value="Exportar a Excel" />
+
+    <br />        
+		</div>
+		<a href="#" onclick="ocultaventana('datos'); return false;">Entrada de datos</a>
+		<div id="Tabla">
+		
+		</div>
+   	<div id="Carton">
+		
+		</div>
+    </body>
+</html>
