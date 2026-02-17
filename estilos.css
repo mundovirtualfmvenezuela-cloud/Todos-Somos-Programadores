@@ -78,6 +78,7 @@ header {
   100% { transform: scale(1); }
 }
 
+
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   .header-container {
@@ -87,9 +88,8 @@ header {
   }
   
   .logo {
-    width: 60px;
-    margin-bottom: 0.5rem;
-  }
+           width: 50px;
+       }
   
   .header-text {
     text-align: center;
@@ -97,19 +97,29 @@ header {
   }
   
   .header-text h1 {
-    font-size: 1.3rem;
+           font-size: 1.2rem;
   }
   
   .header-text p {
-    font-size: 0.8rem;
+	   font-size: 0.8rem;
   }
   
   /* Ajusta el carrusel para que comience después del header */
   .carrusel {
 	  margin-top: 0;
   }
+  
+  .curso {
+          padding: 0.5rem;
+  }
+  .curso h3 {
+   font-size: 1.1rem;
+  }
+  .curso p {
+   font-size: 0.9rem;
+  }
 }
-}
+
 
 .logo {
   width: 100px;
@@ -345,6 +355,23 @@ footer {
   border-top: 1px solid #ddd;
 }
 
+.contenido {
+    display: none;
+}
+
+.contenido-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.contenido-btn:hover {
+    background-color: #0056b3;
+}
+
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   .carrusel {
@@ -375,4 +402,3 @@ footer {
     height: 8px;
   }
 }
-
