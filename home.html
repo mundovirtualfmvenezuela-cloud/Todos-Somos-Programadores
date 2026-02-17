@@ -58,13 +58,6 @@
   </nav>
 
   <!-- Secciones en nuevo orden -->
-  <section id="quienes-somos">
-    <h2>Quiénes Somos</h2>
-	<p>Ofrecemos una academia de cursos en herramientas de software con modalidades presencial, remoto o in company para comodidad de nuestros usuarios. Son cursos rápidos para dominar la tecnica de uso de herramientas y dictados en horarios y modalidades flexibles.</p>
-    <p>También somos el único programa de radio que aborda temas de informática y sistemas transmitido en señal libre desde Guarenas, Estado Miranda, Venezuela por la emisora Caliente Stereo 105.9.</p>
-	<p>Somos Yolice Zapata y Ramón Quintero, ambos profesionales con amplia experiencia en gestión de recursos humanos, informática además de la produccion, locucion y conduccion en radio.</p>
-  </section>
-
   <section id="academia">
     <h2>Academia de Cursos de Computación</h2>
     <div class="descuento-febrero">
@@ -81,7 +74,11 @@
       <p>Ideal para mejorar la productividad e interactuar con IA generativa.</p>
 	  <p><strong>Duración:</strong> 8 horas</p>
       <p><strong>Inversión:</strong> $10 remoto / $20 presencial</p>
-	  <button class="contenido-btn">Contenido</button>
+	  <div class="botones-curso">
+        <button class="contenido-btn" onclick="toggleContenido(this)">Contenido</button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXtnIbendXAH95bPiSpgRuSFMaLLwUSPdVVIFrX7zKEFrorg/viewform?usp=header" 
+           target="_blank" class="inscribete-btn">Inscríbete</a>
+    </div>
 	  <div class="contenido">
 		  <p><strong>MODULO 1:</strong>
 			Que es la inteligencia artificial? - 
@@ -116,7 +113,11 @@
       <p>Aprenda a crear sitios responsivos en horas y mejorarlos en minutos con IA.</p>
 	  <p><strong>Duración:</strong> 12 horas</p>
       <p><strong>Inversión:</strong> $20 remoto / $30 presencial</p>	  
-	  <button class="contenido-btn">Contenido</button>
+	  <div class="botones-curso">
+        <button class="contenido-btn" onclick="toggleContenido(this)">Contenido</button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXtnIbendXAH95bPiSpgRuSFMaLLwUSPdVVIFrX7zKEFrorg/viewform?usp=header" 
+           target="_blank" class="inscribete-btn">Inscríbete</a>
+    </div>
 	  <div class="contenido">
 		  <p><strong>MODULO 1:</strong>
 			Diseño asistido por IA — Wireframes y prototipos - 
@@ -143,7 +144,11 @@
       <p>Genere contenido visual impactante para redes sociales y presentaciones ejecutivas.</p>
 	  <p><strong>Duración:</strong> 8 horas</p>
       <p><strong>Inversión:</strong> $10 remoto / $20 presencial</p>
-	  <button class="contenido-btn">Contenido</button>
+	  <div class="botones-curso">
+        <button class="contenido-btn" onclick="toggleContenido(this)">Contenido</button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXtnIbendXAH95bPiSpgRuSFMaLLwUSPdVVIFrX7zKEFrorg/viewform?usp=header" 
+           target="_blank" class="inscribete-btn">Inscríbete</a>
+    </div>
 	  <div class="contenido">
 		  <p><strong>MODULO 1:</strong>
 			Fundamentos de la IA aplicada a imágenes y video - 
@@ -166,21 +171,6 @@
     </div>
   </section>
 
-  <section id="preinscripcion">
-    <h2>Preinscripción</h2>
-    <p>
-      Ya tenemos abiertas las inscripciones para <strong>todos nuestros cursos</strong>. 
-      Complete el formulario para iniciar el proceso de inscripción.
-    </p>
-
-    <p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXtnIbendXAH95bPiSpgRuSFMaLLwUSPdVVIFrX7zKEFrorg/viewform?usp=header" 
-         target="_blank">
-         Formulario de Preinscripción
-      </a>
-    </p>
-  </section>
-
   <section id="radio">
     <h2>Programa de Radio Mundo Virtual</h2>
     <p>Formato podcast transmitido en vivo los sábados a las 10:00 AM por 
@@ -198,6 +188,13 @@
         <video src="Mundo Virtual.mp4" muted></video>
       </a>
     </div>
+  </section>
+
+  <section id="quienes-somos">
+    <h2>Quiénes Somos</h2>
+	<p>Ofrecemos una academia de cursos en herramientas de software con modalidades presencial, remoto o in company para comodidad de nuestros usuarios. Son cursos rápidos para dominar la tecnica de uso de herramientas y dictados en horarios y modalidades flexibles.</p>
+    <p>También somos el único programa de radio que aborda temas de informática y sistemas transmitido en señal libre desde Guarenas, Estado Miranda, Venezuela por la emisora Caliente Stereo 105.9.</p>
+	<p>Somos Yolice Zapata y Ramón Quintero, ambos profesionales con amplia experiencia en gestión de recursos humanos, informática además de la produccion, locucion y conduccion en radio.</p>
   </section>
 
   <section id="contacto">
@@ -259,21 +256,20 @@
         mostrarSlide(currentIndex + 1);
       }, 5000);
     });
-	document.addEventListener("DOMContentLoaded", function() {
-        const contenidoBtns = document.querySelectorAll(".contenido-btn");
-
-        contenidoBtns.forEach(btn => {
-            btn.addEventListener("click", function() {
-                const contenido = this.nextElementSibling;
-                if (contenido.style.display === "none" || contenido.style.display === "") {
-                    contenido.style.display = "block";
-                } else {
-                    contenido.style.display = "none";
-                }
-            });
-        });
-    });
+	function toggleContenido(btn) {
+    // Encuentra el div de contenido que sigue al div de botones-curso
+    const cursoDiv = btn.closest('.curso');
+    const contenidoDiv = cursoDiv.querySelector('.contenido');
+    
+    // Alternar la visualización del contenido
+    if (contenidoDiv.style.display === 'none' || contenidoDiv.style.display === '') {
+        contenidoDiv.style.display = 'block';
+        btn.textContent = 'Ocultar contenido';
+    } else {
+        contenidoDiv.style.display = 'none';
+        btn.textContent = 'Contenido';
+    }
+}
   </script>
 </body>
 </html>
-
