@@ -110,7 +110,7 @@ header {
   }
   
   .curso {
-          padding: 0.5rem;
+          /*padding: 0.5rem;*/
   }
   .curso h3 {
    font-size: 1.1rem;
@@ -356,7 +356,25 @@ footer {
 }
 
 .contenido {
-    display: none;
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #007bff;
+    display: none; /* Oculto por defecto */
+}
+
+.contenido h4 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.contenido ul {
+    padding-left: 20px;
+}
+
+.contenido li {
+    margin-bottom: 8px;
 }
 
 .contenido-btn {
@@ -401,4 +419,40 @@ footer {
     width: 8px;
     height: 8px;
   }
+}
+
+.inscribete-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.inscribete-btn:hover {
+    background-color: #218838;
+}
+
+.botones-curso {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+    .botones-curso {
+        flex-direction: column;
+    }
+    .inscribete-btn {
+        margin-left: 0;
+    }
 }
