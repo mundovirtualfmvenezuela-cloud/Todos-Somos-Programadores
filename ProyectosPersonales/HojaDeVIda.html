@@ -3,254 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ramon Quintero — Perfil profesional</title>
-  <meta name="description" content="Página personal de Ramon Quintero: datos, experiencia, aspiraciones y portafolio." />
+  <title>Ramon Quintero — Hoja de Vida</title>
+
   <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #22c55e;
-      --accent-2: #60a5fa;
-      --border: #1f2937;
-    }
-    * { box-sizing: border-box; }
+    /* Estilo general optimizado para PDF tamaño carta */
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: linear-gradient(135deg, #0b1220 0%, #0f172a 50%, #0b1220 100%);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      color: #222;
+      background: #fff;
+      line-height: 1.5;
     }
-    a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      padding: 64px 24px 24px;
+
+    h1, h2, h3 {
+      color: #0a3a75;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #0a3a75;
+      padding-bottom: 4px;
+      margin-top: 28px;
+    }
+
+    p, li {
+      font-size: 14px;
+    }
+
+    .center {
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.5px;
+
+    .photo {
+      display: block;
+      margin: 10px auto 20px;
+      border-radius: 6px;
+      width: 160px;
+      height: auto;
     }
-    header p {
-      margin: 8px 0 0;
-      color: var(--muted);
+
+    .section {
+      margin-bottom: 20px;
     }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px;
+
+    ul {
+      margin-top: 6px;
+      padding-left: 20px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 800px) {
-      .grid {
-        grid-template-columns: 1.4fr 1fr;
-      }
-    }
-    section.card {
-      background: radial-gradient(1000px 600px at 10% 10%, rgba(96,165,250,0.08) 0%, transparent 40%),
-                  radial-gradient(800px 500px at 90% 20%, rgba(34,197,94,0.08) 0%, transparent 45%),
-                  var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-    }
-    section.card h2 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .list li {
-      padding: 8px 0;
-      border-bottom: 1px dashed var(--border);
-    }
-    .list li:last-child { border-bottom: none; }
+
     .badge {
       display: inline-block;
+      background: #e8f0fe;
+      color: #0a3a75;
       padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(96,165,250,0.15);
-      border: 1px solid rgba(96,165,250,0.35);
-      color: var(--text);
-      font-size: 0.85rem;
-      margin: 4px 6px 4px 0;
+      border-radius: 12px;
+      font-size: 12px;
+      margin: 3px;
+      border: 1px solid #bcd0f5;
     }
-    .contact {
+
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
+      margin-top: 10px;
     }
-    @media (min-width: 540px) {
-      .contact {
-        grid-template-columns: 1fr 1fr;
-      }
+
+    .small {
+      color: #555;
+      font-size: 13px;
     }
-    .cta {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(96,165,250,0.2));
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 600;
+
+    a {
+      color: #0a3a75;
+      text-decoration: none;
     }
-    footer {
-      text-align: center;
-      padding: 24px;
-      color: var(--muted);
+
+    a:hover {
+      text-decoration: underline;
     }
-    .columns {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 700px) {
-      .columns {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .kbd {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      background: rgba(148,163,184,0.15);
-      border: 1px solid rgba(148,163,184,0.3);
-      padding: 2px 6px;
-      border-radius: 6px;
+
+    /* Para PDF: evitar cortes bruscos */
+    .page-break {
+      page-break-before: always;
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Ramon Quintero</h1>
-    <p>Licenciado en Computación (U.C.V.) · Diplomado en Facilitación (I.U. AVEPANE) · Desarrollador de Software</p>
-	<img src="IMG-20220605-WA0000.jpg" width="200" height="200">
-  </header>
 
-  <main class="container">
-    <div class="grid">
-      <!-- Perfil y contacto -->
-      <section class="card" aria-labelledby="quien-soy">
-        <h2 id="quien-soy">Quién soy</h2>
-        <p><strong>Ramon Quintero</strong>, 55 años. Casado, un hijo. Vivo en <strong>Guarenas, Estado Miranda</strong>. Desarrollador de Software desde hace <strong>30 años</strong>.</p>
-        <div class="contact" aria-label="Medios de contacto">
-          <div>
-            <p><strong>Correos:</strong>
-              <br /><a href="mailto:ramonquintero@yahoo.com">ramonquintero@yahoo.com</a>
-              <br /><a href="mailto:ramonquintero0309@gmail.com">ramonquintero0309@gmail.com</a>
-            </p>
-          </div>
-          <div>
-            <p><strong>Teléfono / WhatsApp:</strong>
-              <br /><a href="tel:+584129145076">+58 412 914 50 76</a>
-              <br /><a href="https://wa.me/584129145076" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-            </p>
-          </div>
-        </div>
-        <p><strong>Redes:</strong>
-          <br />Instagram: <span class="kbd">@ramon_quintero_c</span>
-          <br />X: <span class="kbd">@ramonquintero</span>
-        </p>
-        <p><strong>Formación:</strong> Licenciado en Computación (U.C.V.) · Diplomado en Facilitación (I.U. AVEPANE)</p>
-      </section>
+  <!-- ENCABEZADO -->
+  <h1>Ramon Quintero</h1>
+  <p class="center small">
+    Licenciado en Computación (U.C.V.) · Diplomado en Facilitación (I.U. AVEPANE) · Desarrollador de Software
+  </p>
+  <img src="IMG-20220605-WA0000.jpg" class="photo" alt="Foto de Ramon Quintero">
 
-      <section class="card" aria-labelledby="dedicacion">
-        <h2 id="dedicacion">A qué me dedico</h2>
-        <p>He trabajado en desarrollo y mantenimiento de software en <strong>Banca</strong>, <strong>PDVSA</strong>, área <strong>fiscal</strong> y <strong>sector médico/farmacia</strong>. Mi ultimo empleo en <strong>TheFactoryHKA</strong> Me consolidó como coordinador desempeñando labores de seguimiento, control y asesoria en el desarrollo y mantenimiento de software. También soy facilitador/instructor de herramientas, entornos y lenguajes de desarrollo.</p>
-        <ul class="list">
-          <li><strong>Bases de datos:</strong> MySQL, PostgreSQL, SQL Server</li>
-          <li><strong>Entornos y lenguajes:</strong> Microsoft Visual Studio con C#, Apache NetBeans con Java, HTML/JavaScript/CSS y PHP </li>
-          <li><strong>Medios:</strong> Conductor y productor del programa de radio <em>Mundo Virtual</em>, transmitido por <span class="kbd">fmcaliente.com</span> los sábados a las 10:00 AM. Contenido en YouTube: canal <span class="kbd">MundoVirtualfm</span>.</li>
-        </ul>
-      </section>
+  <!-- QUIÉN SOY -->
+  <h2>Quién soy</h2>
+  <p><strong>Ramon Quintero</strong>, 55 años. Casado, un hijo. Resido en <strong>Guarenas, Estado Miranda</strong>.  
+     Desarrollador de Software con más de <strong>30 años de experiencia</strong>.</p>
+  <p>Experiencia profesional en Venezuela. Inglés a nivel de lectura y escritura.</p>
+
+  <div class="contact-grid">
+    <div>
+      <p><strong>Correos:</strong><br>
+        <a href="mailto:ramonquintero@yahoo.com">ramonquintero@yahoo.com</a><br>
+        <a href="mailto:ramonquintero0309@gmail.com">ramonquintero0309@gmail.com</a>
+      </p>
     </div>
+    <div>
+      <p><strong>Teléfono / WhatsApp:</strong><br>
+        <a href="tel:+584129145076">+58 412 914 50 76</a><br>
+        <a href="https://wa.me/584129145076">Escribir por WhatsApp</a>
+      </p>
+    </div>
+  </div>
 
-    <!-- Aspiraciones -->
-    <section class="card" aria-labelledby="aspiraciones">
-      <h2 id="aspiraciones">Aspiraciones</h2>
-      <p>Impartir cursos de <strong>Inteligencia Artificial</strong> aplicada al desarrollo de software <strong>Web</strong>, para <strong>Android/iOS</strong>, y soluciones <strong>ágiles</strong>.</p>
-      <p>Apoyar equipos de trabajo y aportar soluciones bajo mi experiencia y profesionalismo.</p>
-	  <div>
-        <span class="badge">IA aplicada</span>
-        <span class="badge">Desarrollo Web</span>
-		<span class="badge">Servicios REST</span>
-		<span class="badge">APIs para integración</span>
-        <span class="badge">Android</span>
-        <span class="badge">iOS</span>
-        <span class="badge">Agilidad</span>
-      </div>
-    </section>
+  <p><strong>Redes:</strong><br>
+    Instagram: @ramon_quintero_c<br>
+    X: @ramonquintero<br>
+    LinkedIn: www.linkedin.com/in/ramon-quintero-8796641b7
+  </p>
 
-<!-- Aspiraciones -->
-    <section class="card" aria-labelledby="Trabajos anteriores">
-      <h2 id="aspiraciones">Experiencia laboral</h2>
-      <p>Mi ultima experiencia laboral (2017-2025) fue desempeñar el cargo de Coordinador I & D para el departamento de <strong>Web services</strong> durante <strong>8 años</strong>, gestionando proyectos de <strong>Facturación electrónica</strong>, para distintos paises: <strong>Perú, Colombia, Panamá y Venezuela</strong>.</p>
-	  <p>He desempeñado cargos de analista de aplicaciones (1999-2002 y 2008-2016) para BVC, CityBank, Banco Exterior, Banesco y Banco Industrial.</p>
-	  <p>Trabajé en PDVSA (2003-2006) como analista de portales web.</p>
-	  <p>He realizado trabajos estilo freelance para FarmaAhorro, Cenco-Zotti, Seguros Mercantil y HBO.</p>
-	  <p>He dictado cursos desde 1.999 hasta hoy  en institutos privados: Gala, Benllisoft, y Mundo Virtual.</p>
-	  <p>Inicié mi experiencia laboral en el Ministerio de Educacion para el programa Beca Alimentaria en 1993.</p>
-      <div>
-        <span class="badge">C/C++/Java/C#/UNIX/Windows</span>
-        <span class="badge">Desarrollo Web</span>
-		<span class="badge">Servicios REST/SOAP</span>
-		<span class="badge">APIs para integración/MQSeries/SNA</span>
-        <span class="badge">XML/XSD</span>
-        <span class="badge">XSL</span>
-        <span class="badge">JSON</span>
-      </div>
-    </section>
+  <p><strong>Formación:</strong>  
+    Licenciado en Computación (U.C.V.) · Diplomado en Facilitación (I.U. AVEPANE)
+  </p>
 
-    <!-- Portafolio -->
-    <section class="card" aria-labelledby="portafolio">
-      <h2 id="portafolio">Portafolio resumido</h2>
-      <ul class="list">
-        <li>
-          <strong>Aplicación reciente:</strong> Libro diario electrónico
-          <div class="muted">Hecha con HTML, JavaScript y CSS.</div>
-		  <img src="contab1.png" width="300px" height="200px"><img src="contab2.png" width="300px" height="200px">
-        </li>
-      </ul>
-      <a class="cta" href="#" aria-disabled="true">Demo (próximamente)</a>
-    </section>
+  <!-- A QUÉ ME DEDICO -->
+  <h2>A qué me dedico</h2>
+  <p>
+    Experiencia en desarrollo y mantenimiento de software en sectores como <strong>banca</strong>, <strong>PDVSA</strong>, 
+    <strong>área fiscal</strong> y <strong>sector médico/farmacia</strong>.  
+    Mi último empleo en <strong>TheFactoryHKA</strong> consolidó mi rol como coordinador y <strong>Scrum Master</strong> 
+    en proyectos de facturación electrónica, documentos XML/JSON, servicios REST, DevOps, VS .NET y React.
+  </p>
 
-    <!-- Evaluaciones -->
-    <section class="card" aria-labelledby="evaluaciones">
-      <h2 id="evaluaciones">Evaluaciones de curso</h2>
-      <div class="columns">
-        <div>
-          <h3 style="margin-top:0;">Android avanzado</h3>
-          <p><a href="https://docs.google.com/forms/d/e/1FAIpQLScMowjPMP6YeNzad6hgbwvIlgLXNsnGXQyJ62BBDW7uuTtz9w/viewform?usp=pp_url" target="_blank" rel="noopener">Abrir evaluación</a></p>
-        </div>
-        <div>
-          <h3 style="margin-top:0;">iOS</h3>
-          <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdO0sUtVttC6PXKA0B9MLNBWjUsW4DGmoxPQSmv6rlVbx26kg/viewform?usp=pp_url" target="_blank" rel="noopener">Abrir evaluación</a></p>
-        </div>
-      </div>
-    </section>
+  <ul>
+    <li><strong>Bases de datos:</strong> MySQL, PostgreSQL, SQL Server</li>
+    <li><strong>Lenguajes y entornos:</strong> C#, C/C++, Java, HTML/JS/CSS, PHP, GitHub, CI/CD</li>
+    <li><strong>Medios y contenido audiovisual:</strong> Conductor del programa de radio <em>Mundo Virtual</em> (fmcaliente.com).  
+        Producción de contenido con IA generativa para YouTube (<em>MundoVirtualfm</em>).</li>
+  </ul>
 
-    <!-- Curso HTML con IA -->
-    <section class="card" aria-labelledby="curso-html-ia">
-      <h2 id="curso-html-ia">Curso básico de HTML usando IA</h2>
-      <p>Me encuentro migrando los cursos que he dictado para integrar la IA.</p>
-	  <img src="HTML1.png" width="200px" height="200px"><img src="HTML2.png" width="200px" height="200px">
-      <a class="cta" href="#" aria-disabled="true">Solicitar temario (próximamente)</a>
-    </section>
-  </main>
+  <!-- ASPIRACIONES -->
+  <h2>Aspiraciones</h2>
+  <p>Impartir cursos de <strong>Inteligencia Artificial aplicada</strong> al desarrollo Web, Android/iOS y metodologías ágiles.</p>
+  <p>Crear contenido audiovisual educativo usando IA.</p>
+  <p>Desarrollar soluciones Web y móviles que aumenten la productividad.</p>
 
-  <footer>
-    <p>© Ramon Quintero — Perfil profesional</p>
-  </footer>
+  <div>
+    <span class="badge">IA aplicada</span>
+    <span class="badge">Desarrollo Web</span>
+    <span class="badge">Servicios REST</span>
+    <span class="badge">Educación</span>
+    <span class="badge">Android</span>
+    <span class="badge">iOS</span>
+    <span class="badge">Agilidad</span>
+  </div>
+
+  <!-- EXPERIENCIA LABORAL -->
+  <h2>Experiencia laboral</h2>
+  <p>
+    <strong>2017–2025:</strong> Coordinador I&D — Departamento de Web Services (TheFactoryHKA).  
+    Gestión de proyectos de facturación electrónica para <strong>Perú, Colombia, Panamá y Venezuela</strong>.
+  </p>
+  <p>
+    <strong>1999–2002 / 2008–2016:</strong> Analista de aplicaciones en BVC, Citibank, Banco Exterior, Banesco y Banco Industrial.
+  </p>
+  <p>
+    <strong>2003–2006:</strong> Analista de portales web en PDVSA.
+  </p>
+  <p>
+    Trabajos freelance para FarmaAhorro, Cenco-Zotti, Seguros Mercantil y HBO (Java, C#, BD).
+  </p>
+  <p>
+    <strong>Instructor desde 1999</strong> en Gala, Benllisoft y Mundo Virtual.
+  </p>
+  <p>
+    <strong>Inicio laboral en 1993</strong> — Ministerio de Educación (UNIX System V, Informix).
+  </p>
+
+  <div>
+    <span class="badge">C/C++</span>
+    <span class="badge">Java</span>
+    <span class="badge">C#</span>
+    <span class="badge">UNIX/Windows</span>
+    <span class="badge">REST/SOAP</span>
+    <span class="badge">XML/XSD</span>
+    <span class="badge">JSON</span>
+    <span class="badge">MQSeries</span>
+  </div>
+
+  <!-- PORTAFOLIO -->
+  <h2>Portafolio resumido</h2>
+  <ul>
+    <li>
+      <strong>Libro diario electrónico:</strong>  
+      Aplicación Web (HTML/CSS/JS con IA) + versión APK Android (App Inventor).  
+      Demo: https://librocontable.vercel.app/Librodiario.html
+    </li>
+
+    <li>
+      <strong>Cursos disponibles:</strong><br>
+      - Curso básico de HTML usando IA<br>
+      - Curso de elaboración de Sitios Web con IA<br>
+      - Curso de manejo de Imágenes y Videos con IA<br>
+      - Curso de programación Java para principiantes<br>
+      Contenido: https://todos-somos-programadores.vercel.app/home.html
+    </li>
+  </ul>
+
+  <br><br>
+  <p class="center small">© Ramon Quintero — Hoja de Vida</p>
+
 </body>
 </html>
