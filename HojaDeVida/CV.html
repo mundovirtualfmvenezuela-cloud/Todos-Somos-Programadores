@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ramon Quintero — Résumé</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      color: #222;
+      background:lightblue;
+      line-height: 1.5;
+    }
+
+    /* Download button */
+    .download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #0a3a75;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    /* Language button */
+    .language-btn {
+      position: fixed;
+      top: 20px;
+      right: 180px;
+      background: #0a3a75;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .download-btn:hover {
+      background: #0d4c9c;
+    }
+
+    h1, h2, h3 {
+      color: #0a3a75;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #0a3a75;
+      padding-bottom: 4px;
+      margin-top: 28px;
+    }
+
+    p, li {
+      font-size: 14px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .photo {
+      float: right;
+      margin: 1px auto 20px;
+      border-radius: 6px;
+      width: 160px;
+      height: auto;
+    }
+
+    ul {
+      margin-top: 6px;
+      padding-left: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0fe;
+      color: #0a3a75;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin: 3px;
+      border: 1px solid #bcd0f5;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr;
+      gap: 20px;
+      margin-top: 1px;
+    }
+
+    .small {
+      color: #555;
+      font-size: 13px;
+    }
+
+    a {
+      color: #0a3a75;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Certificate Carousel Styles */
+    .carousel-container {
+      margin: 25px 0;
+      position: relative;
+      background: #f4f7fa;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #e1e8ed;
+    }
+
+    .carousel-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0a3a75;
+      margin-bottom: 12px;
+    }
+
+    .carousel-track {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+    }
+
+    /* Modern scrollbar customization */
+    .carousel-track::-webkit-scrollbar {
+      height: 8px;
+    }
+    .carousel-track::-webkit-scrollbar-track {
+      background: #e1e8ed;
+      border-radius: 4px;
+    }
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: #0a3a75;
+      border-radius: 4px;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 180px;
+      background: white;
+      border: 1px solid #d1d9e0;
+      border-radius: 6px;
+      padding: 6px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.03);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .carousel-item p {
+      margin: 6px 0 0 0;
+      font-size: 11px;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+
+<body>
+<img src="IMG-20220605-WA0000-removebg-preview.png" class="photo" alt="Ramon Quintero Profile Picture">
+<a class="language-btn" href="HojaDeVIda.html">En Español</a>
+  <a class="download-btn" href="Resume2026English.pdf" download>Download PDF</a>
+
+  <h1>Ramon Quintero</h1>
+  <p class="center small">
+    Bachelor of Computer Science (U.C.V.) · Software Developer · Software Solutions Consultant
+  </p>
+  
+
+  <p><strong>Ramon Orlando Quintero Carrillo</strong>, 56 years old. Married, one child. Residing in <strong>Caracas</strong>.  
+     Software Developer with over <strong>32 years of experience</strong>.
+     Expert in BackEnd web/mobile solutions. English level: Professional reading and writing.</p>
+
+  <div class="contact-grid">
+    <div>
+      <p><strong>Email:</strong><br>
+        <a href="mailto:ramonquintero@yahoo.com" target="_blank">ramonquintero@yahoo.com</a><br>
+        <a href="mailto:ramonquintero0309@gmail.com" target="_blank">ramonquintero0309@gmail.com</a>
+      </p>
+    </div>
+    <div>
+      <p><strong>Phone / WhatsApp:</strong><br>
+        <a href="tel:+584129145076" target="_blank">+58 412 914 50 76</a><br>
+        <a href="https://wa.me/584129145076" target="_blank">Message on WhatsApp</a>
+      </p>
+    </div>
+    <div>
+      <p><strong>Social Networks:</strong><br>
+    <a href="https://instagram.com/ramon_quintero_c" target="_blank">Instagram: @ramon_quintero_c</a><br>
+    <a href="https://x.com/ramonquintero" target="_blank">X: @ramonquintero</a><br>
+    <a href="https://www.tiktok.com/@ramonquintero202?_r=1&_t=ZS-96T2eBzQNL3" target="_blank">TikTok: ramonquintero202</a><br>
+    <a href="https://www.linkedin.com/in/ramon-quintero-8796641b7" target="_blank">LinkedIn: www.linkedin.com/in/ramon-quintero-8796641b7</a>
+  </p>
+    </div>
+  </div>
+
+  <p><strong>Education:</strong>  
+    Bachelor of Computer Science (U.C.V.) · Diploma in Facilitation (I.U. AVEPANE) · 4 semesters of Bachelor's degree in Mathematics (U.C.V.)
+  </p>
+
+  <h2>What I do</h2>
+  <p>
+    Extensive experience in software development and maintenance across various industries: <strong>Banking</strong>, <strong>PDVSA (Oil & Gas)</strong>, 
+    <strong>SENIAT (Tax Authority)</strong>, and <strong>Healthcare/Pharma</strong>.  
+    My most recent role at <strong>TheFactoryHKA</strong> consolidated my position as coordinator and <strong>Scrum Master</strong> 
+    in electronic invoicing projects, handling XML/JSON documents, REST and SOAP services, DevOps, Visual Studio .NET, Node JS, CLAUDE AI, GEMINI, and COPILOT.
+  </p>
+
+  <ul>
+    <li><strong>Databases:</strong> MySQL, PostgreSQL, SQL Server, Oracle, SQLite, MongoDB</li>
+    <li><strong>Languages and Environments:</strong> C#, C/C++, Java, HTML/JS/CSS, PHP, GitHub, CI/CD, Node JS, Visual Basic</li>
+    <li><strong>Frameworks:</strong> JAVASCRIPT Electron // JAVASCRIPT Capacitor // JAVA J2EE // Microsoft .Net // Symfony // CakePHP // Yii // Android Studio // AppInventor</li>
+  </ul>
+
+  <h2>Career Aspirations</h2>
+  <p>To develop Web and mobile solutions that increase productivity, contributing my technical knowledge and leadership skills.</p>
+  <p>To continue expanding my experience in project management and supervision.</p>
+  <p>To leverage my expertise in handling high-transactional environments (banks and tax authorities).</p>
+  <p>To thrive in a work environment that offers constant growth and professional opportunities.</p>
+
+  <div>
+    <span class="badge">Applied AI</span>
+    <span class="badge">Web Development</span>
+    <span class="badge">REST Services</span>
+    <span class="badge">XML/XSL/XSD</span>
+    <span class="badge">Android</span>
+    <span class="badge">iOS</span>
+    <span class="badge">Windows</span>
+    <span class="badge">Linux</span>
+    <span class="badge">Agile</span>
+  </div>
+
+  <h2>Work Experience Summary</h2>
+  <p>
+    <strong>2017–2025:</strong> R&D Coordinator — Web Services Department (TheFactoryHKA).  
+    Management of electronic invoicing projects for <strong>Peru, Colombia, Panama, and Venezuela</strong>.
+  </p>
+  <p>
+    <strong>1999–2002 / 2008–2016:</strong> Application Analyst at BVC, Citibank, Banco Exterior, Banesco, and Banco Industrial.
+  </p>
+  <p>
+    <strong>2003–2006:</strong> Web Portal Analyst at PDVSA.
+  </p>
+  <p>
+    Freelance projects for FarmaAhorro, Cenco-Zotti, Seguros Mercantil, and HBO (Java, C#, Databases).
+  </p>
+  <p>
+    <strong>Began professional career in 1993</strong> — Ministry of Education (UNIX System V, Informix).
+  </p>
+
+  <div>
+    <span class="badge">C/C++</span>
+    <span class="badge">Java</span>
+    <span class="badge">C#</span>
+    <span class="badge">UNIX/Windows</span>
+    <span class="badge">REST/SOAP</span>
+    <span class="badge">XML/XSD</span>
+    <span class="badge">JSON</span>
+    <span class="badge">MQSeries</span>
+  </div>
+
+  <h2>Portfolio Summary</h2>
+  <ul>
+    <li>
+      <strong>Electronic Ledger Book (Libro Diario):</strong>  
+      Web Application (HTML/CSS/JS with AI) + Android APK version (App Inventor).  
+      Demo: <a href="https://librocontable.vercel.app/Librodiario.html" target="_blank">https://librocontable.vercel.app/Librodiario.html</a>
+    </li>
+    <li>
+      <strong>Courses Taught on Social Media:</strong><br>
+      Basic HTML Course using AI // Website Creation Course with AI // Image and Video Management Course using AI // Java Programming Course<br>
+    </li>
+    <li>
+      <strong>Content Generation:</strong><br>
+      Production of content using generative AI for YouTube (<em><a href="https://www.youtube.com/@MundoVirtualFM" target="_blank">https://www.youtube.com/@MundoVirtualFM</a></em>).<br>
+    </li>
+  </ul>
+
+  <div class="carousel-container">
+    <div class="carousel-title">Key Certificates & Supporting Documents</div>
+    <div class="carousel-track">
+      <div class="carousel-item">
+        <img src="titulo-fondo-negro.jpg" alt="Bachelor of Computer Science UCV Degree">
+        <p>Bachelor of Computer Science (UCV)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="course-certificates-SCRUMstudy_Ramon Quintero.png" alt="SCRUMstudy Certificate">
+        <p>SCRUM Fundamentals (SCRUMstudy)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="AVEPANE.jpg" alt="AVEPANE Diploma">
+        <p>Diploma in Facilitation (AVEPANE)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="IESA.jpg" alt="High Performance Teams Course Certificate">
+        <p>High-Performance Teams (IESA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="ConstanciaHKA.jpeg" alt="HKA Certificate">
+        <p>R&D Coordinator (TheFactoryHKA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-docente-ucv.jpg" alt="UCV Teaching Certificate">
+        <p>Data Structures Lecturer (UCV)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-pdvsa.jpg" alt="PDVSA Certificate">
+        <p>Web Analyst Experience (PDVSA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="SanFar.jpg" alt="SANFAR Certificate">
+        <p>Development Specialist Experience (SANFAR)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="sun-java.jpg" alt="Java Programming Language">
+        <p>Java Programming Language (Sun Microsystems)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="Sql-server-2000-admon.jpg" alt="Administering SQL Server 2000">
+        <p>2072 Administering Microsoft SQL Server 2000 Database (Microsoft)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="vb-NET.jpg" alt="Visual Basic .NET programming">
+        <p>2373 Programming with Microsoft Visual Basic .NET (Microsoft)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="pdvsa-pvcs.jpg" alt="PVCS Workshop">
+        <p>PVCS Workshop (PDVSA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="ALDON.jpg" alt="Aldon LMe Workshop">
+        <p>Aldon LMe Workshop / Developers</p>
+      </div>
+      <div class="carousel-item">
+        <img src="red-del-estado.jpg" alt="Government Networks Certificate">
+        <p>Government Networks (UNEFA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="banda-ancha.jpg" alt="Broadband Networks Certificate">
+        <p>Broadband Networks (UCV)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="curso-c++-ucv.jpg" alt="Visual C++ Certificate">
+        <p>Visual C++ (UCV)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="Cerrando-brechas.jpg" alt="Closing Gaps Course PDVSA">
+        <p>Network Organization Course (PDVSA)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="DE-BIV.jpg" alt="Teamwork Course">
+        <p>Teamwork Course (DE)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-biv.jpg" alt="Banco Industrial Contract">
+        <p>Project Leader (Banco Industrial)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-eversystems.jpg" alt="EverSystems Certificate">
+        <p>Programmer Analyst (EverSystems)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-quinsoft.jpg" alt="QuinSoft Certificate">
+        <p>Programmer Analyst (QuinSoft)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-texunion.jpg" alt="TexUnion Certificate">
+        <p>Head of Computing (TexUnion)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-santolo.jpg" alt="Santolo Certificate">
+        <p>Systems Analyst (Santolo)</p>
+      </div>
+      <div class="carousel-item">
+        <img src="constancia-punto-micro.jpg" alt="Punto Micro Certificate">
+        <p>Microcomputer Technician</p>
+      </div>
+      <div class="carousel-item">
+        <img src="flash-intevep.jpg" alt="Macromedia Flash Course Certificate">
+        <p>Macromedia Flash</p>
+      </div>
+      <div class="carousel-item">
+        <img src="Linux-Administracion-nivel-1.jpg" alt="Basic LINUX Administration Course">
+        <p>Basic LINUX Administration</p>
+      </div>
+      <div class="carousel-item">
+        <img src="Linux-Administracion-avanzada.jpg" alt="Advanced LINUX Administration Course">
+        <p>Advanced LINUX Administration</p>
+      </div>
+      <div class="carousel-item">
+        <img src="sap-portal.jpg" alt="SAP Portal Course">
+        <p>EP 100 Managing Enterprise Portal Content</p>
+      </div>
+      <div class="carousel-item">
+        <img src="Websphere-portal-app-dev.jpg" alt="IBM WebSphere Portal Applications Development">
+        <p>IBM WebSphere Portal Applications Development</p>
+      </div>
+      <div class="carousel-item">
+        <img src="websphere-portlet-dev.jpg" alt="IBM WebSphere Portal Portlet Applications Development">
+        <p>IBM WebSphere Portal Portlet Applications Development</p>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <p class="center small">© Ramon Quintero — May 2026 — Résumé</p>
+
+</body>
+</html>
