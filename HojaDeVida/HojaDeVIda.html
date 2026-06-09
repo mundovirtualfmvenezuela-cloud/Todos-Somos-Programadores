@@ -1,451 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ramon Quintero — Hoja de Vida</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramón Quintero — Hoja de Vida</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 40px;
-      color: #222;
-      background:lightblue;
-      line-height: 1.5;
-    }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-    /* Botón de descarga */
-    .download-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #0a3a75;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
+        /* Contenedor del Scroll Horizontal para los Banners */
+        .banner-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 15px;
+            background-color: #e2e8f0;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #e2e8f0;
+        }
 
-    /* Language button */
-    .language-btn {
-      position: fixed;
-      top: 20px;
-      right: 180px;
-      background: #0a3a75;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
+        .banner-slider::-webkit-scrollbar {
+            height: 8px;
+        }
 
-    .download-btn:hover {
-      background: #0d4c9c;
-    }
+        .banner-slider::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
 
-    h1, h2, h3 {
-      color: #0a3a75;
-      margin-bottom: 6px;
-    }
+        .banner-slider::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
 
-    h1 {
-      font-size: 28px;
-      text-align: center;
-      margin-bottom: 4px;
-    }
+        .banner-slider img {
+            flex: 0 0 auto;
+            width: calc(50% - 8px); /* Muestra aprox. dos imágenes si la pantalla es grande */
+            min-width: 450px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+            scroll-snap-align: start;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
-    h2 {
-      font-size: 20px;
-      border-bottom: 2px solid #0a3a75;
-      padding-bottom: 4px;
-      margin-top: 28px;
-    }
+        @media (max-width: 768px) {
+            .banner-slider img {
+                width: 100%; /* En pantallas pequeñas se adapta al ancho completo */
+                min-width: 100%;
+            }
+        }
 
-    p, li {
-      font-size: 14px;
-    }
+        /* Perfil Principal */
+        .profile-section {
+            display: flex;
+            padding: 30px;
+            gap: 30px;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    .center {
-      text-align: center;
-    }
+        .profile-text {
+            flex: 1;
+        }
 
-    .photo {
-      float: right;
-      margin: 1px auto 20px;
-      border-radius: 6px;
-      width: 160px;
-      height: auto;
-    }
+        .profile-text h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            color: #1e293b;
+        }
 
-    ul {
-      margin-top: 6px;
-      padding-left: 20px;
-    }
+        .profile-text p {
+            margin: 0;
+            line-height: 1.6;
+            color: #475569;
+            font-size: 1.05rem;
+        }
 
-    .badge {
-      display: inline-block;
-      background: #e8f0fe;
-      color: #0a3a75;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      margin: 3px;
-      border: 1px solid #bcd0f5;
-    }
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 2fr;
-      gap: 20px;
-      margin-top: 1px;
-    }
+        /* Badges de Habilidades */
+        .skills-section {
+            padding: 25px 30px;
+            background-color: #f8fafc;
+        }
 
-    .small {
-      color: #555;
-      font-size: 13px;
-    }
+        .skills-section h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.4rem;
+            color: #1e293b;
+        }
 
-    a {
-      color: #0a3a75;
-      text-decoration: none;
-    }
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
+        .badge {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
 
-    /* Estilos del Carrusel de Certificados */
-    .carousel-container {
-      margin: 25px 0;
-      position: relative;
-      background: #f4f7fa;
-      border-radius: 8px;
-      padding: 20px;
-      border: 1px solid #e1e8ed;
-    }
+        /* Sección de Certificados */
+        .certificates-section {
+            padding: 30px;
+        }
 
-    .carousel-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #0a3a75;
-      margin-bottom: 12px;
-    }
+        .certificates-section h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.4rem;
+            color: #1e293b;
+        }
 
-    .carousel-track {
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-    }
+        .certificates-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+        }
 
-    /* Personalización de barra de desplazamiento moderna */
-    .carousel-track::-webkit-scrollbar {
-      height: 8px;
-    }
-    .carousel-track::-webkit-scrollbar-track {
-      background: #e1e8ed;
-      border-radius: 4px;
-    }
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: #0a3a75;
-      border-radius: 4px;
-    }
+        .certificates-slider img {
+            flex: 0 0 auto;
+            width: 220px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
 
-    .carousel-item {
-      flex: 0 0 auto;
-      width: 180px;
-      background: white;
-      border: 1px solid #d1d9e0;
-      border-radius: 6px;
-      padding: 6px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-    }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e293b;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
 
-    .carousel-item:hover {
-      transform: scale(1.03);
-    }
+        a {
+    color: #ffffff;
+    text-decoration: none; /* Opcional: quita el subrayado predeterminado */
+}
 
-    .carousel-item img {
-      width: 100%;
-      height: 240px;
-      object-fit: contain;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+/* Es buena práctica definir también los estados para que no cambie de color al hacer clic */
+a:visited {
+    color: #ffffff;
+}
 
-    .carousel-item p {
-      margin: 6px 0 0 0;
-      font-size: 11px;
-      color: #444;
-      font-weight: 500;
-    }
-
-    .page-break {
-      page-break-before: always;
-    }
-  </style>
+a:hover {
+    color: #e2e8f0; /* Opcional: un tono gris claro al pasar el cursor para que se note la interacción */
+}
+    </style>
 </head>
-
 <body>
-<img src="IMG-20220605-WA0000-removebg-preview.png" class="photo" alt="Foto de Ramon Quintero">
-<a class="language-btn" href="CV.html">In English</a>
-  <a class="download-btn" href="HojaDeVida.pdf" download>Descargar PDF</a>
 
-  <h1>Ramon Quintero</h1>
-  <p class="center small">
-    Licenciado en Computación (U.C.V.) · Desarrollador de Software · Consultor en soluciones en software
-  </p>
-  
+    <div class="container">
+        
+        <div class="banner-slider">
+            <img src="01.jpg" alt="Desarrollo Multiplataforma - .NET MAUI, Capacitor, Blazor">
+            <img src="02.jpg" alt="Entorno de Servidores - Java, Node.js, C++, Visual Studio">
+        </div>
 
-  <p><strong>Ramon Orlando Quintero Carrillo</strong>, 56 años. Casado, un hijo. Resido en <strong>Caracas</strong>.  
-     Desarrollador de Software con más de <strong>32 años de experiencia</strong>.
-     Experto en soluciones multiplataforma Windows/Linux/MacOS,Android/IOS. Inglés a nivel de lectura y escritura.</p>
+        <div class="profile-section">
+            <div class="profile-text">
+                <h1>Ramón Quintero</h1>
+                <p>Desarrollador de software y entusiasta tecnológico con 32 años de trayectoria en la creación e instrucción de arquitecturas modernas y robustas. Especializado en soluciones multiplataforma, automatización de sistemas multimedia e integración de herramientas avanzadas de inteligencia artificial para la optimización de procesos y entornos empresariales.</p>
+            </div>
+            <img src="IMG-20220605-WA0000-removebg-preview.png" alt="Ramón Quintero" class="profile-avatar" onerror="this.style.display='none'">
+        </div>
 
-  <div class="contact-grid">
-    <div>
-      <p><strong>Correos:</strong><br>
-        <a href="mailto:ramonquintero@yahoo.com" target="_blank">ramonquintero@yahoo.com</a><br>
-        <a href="mailto:ramonquintero0309@gmail.com" target="_blank">ramonquintero0309@gmail.com</a>
-      </p>
+        <div class="skills-section">
+            <h2>Habilidades Clave</h2>
+            <div class="badges-container">
+                <span class="badge">.NET MAUI</span>
+                <span class="badge">Visual Studio C# </span>
+                <span class="badge">Java</span>
+                <span class="badge">Capacitor</span>
+                <span class="badge">Electron</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">Sql Server MySQL PostgreSQL Oracle</span>
+                <span class="badge">.NET Blazor</span>
+            </div>
+        </div>
+
+        <div class="certificates-section">
+            <h2>Certificaciones y Logros</h2>
+            <div class="certificates-slider">
+                <img src="titulo-fondo-negro.jpg" alt="Titulo UCV">
+                <img src="course-certificates-SCRUMstudy_Ramon Quintero.png" alt="SCRUM fundamentals (SCRUMstudy)">
+                <img src="AVEPANE.jpg" alt="Diplomado en Facilitación (AVEPANE)">
+            </div>
+        </div>
+
+        <div class="certificates-section">
+            <h2>Portafolio</h2>
+            <div class="certificates-slider">
+                <span class="badge">Libro diario contable: <a href="https://librocontable.vercel.app/Librodiario.html" target="_blank">https://librocontable.vercel.app/Librodiario.html</a></span>
+                <span class="badge">Prototipo básico en BLAZOR: <a href="https://ramonquintero2904.github.io/aaa/ " target="_blank">https://ramonquintero2904.github.io/aaa/ </a></span>
+                <span class="badge">Generación de contenidos en YouTube: (<a href="https://www.youtube.com/@MundoVirtualFM" target="_blank">https://www.youtube.com/@MundoVirtualFM</a>).</span>
+            </div>
+        </div>
+
+        <div class="certificates-section">
+            <h2>Hoja de vida / Resume</h2>
+            <div class="certificates-slider">
+                <span class="badge">Hoja de vida: <a href="HojaDeVida.pdf"  target="_blank"> PDF en español</a></span>
+                <span class="badge">Resume: <a href="Resume2026English.pdf" target="_blank"> PDF in english</a></span>
+            </div>
+        </div>
+
+
+        <footer>
+            &copy; Ramón Quintero — <a href="tel:+584129145076" target="_blank">+58 412 914 50 76</a> - <a href="mailto:ramonquintero0309@gmail.com" target="_blank">ramonquintero0309@gmail.com</a> - Junio 2026
+        </footer>
+
     </div>
-    <div>
-      <p><strong>Teléfono / WhatsApp:</strong><br>
-        <a href="tel:+584129145076" target="_blank">+58 412 914 50 76</a><br>
-        <a href="https://wa.me/584129145076" target="_blank">Escribir por WhatsApp</a>
-      </p>
-    </div>
-    <div>
-      <p><strong>Redes:</strong><br>
-    <a href="https://instagram.com/ramon_quintero_c" target="_blank">Instagram: @ramon_quintero_c</a><br>
-    <a href="https://x.com/ramonquintero" target="_blank">X: @ramonquintero</a><br>
-    <a href="https://www.tiktok.com/@ramonquintero202?_r=1&_t=ZS-96T2eBzQNL3" target="_blank">TikTok: ramonquintero202</a><br>
-    <a href="https://www.linkedin.com/in/ramon-quintero-8796641b7" target="_blank">LinkedIn: www.linkedin.com/in/ramon-quintero-8796641b7</a>
-  </p>
-    </div>
-  </div>
-
-  <p><strong>Formación:</strong>  
-    Licenciado en Computación (U.C.V.) · Diplomado en Facilitación (I.U. AVEPANE) · 4 semestres licenciatura en Matemáticas (U.C:V.)
-  </p>
-
-  <h2>A qué me dedico</h2>
-  <p>
-    Experiencia en desarrollo y mantenimiento de software en diversas áreas: <strong>Banca</strong>, <strong>PDVSA</strong>, 
-    <strong>SENIAT</strong> y <strong>Salud/Droguerias</strong>.  
-    Mi último empleo en <strong>TheFactoryHKA</strong> consolidó mi rol como coordinador y <strong>Scrum Master</strong> 
-    en proyectos de facturación electrónica, documentos XML/JSON, servicios REST y SOAP, DevOps, Visual Studio .NET, Node JS, CLAUDE AI, GEMINI, COPILOT.
-  </p>
-
-  <ul>
-    <li><strong>Bases de datos:</strong> MySQL, PostgreSQL, SQL Server, Oracle, SQLite, MongoDB</li>
-    <li><strong>Lenguajes y entornos:</strong> C#, HTML/JS/CSS, C/C++, Java, PHP, GitHub, CI/CD, Node JS, Visual Basic</li>
-    <li><strong>FrameWorks:</strong> Blazor, .NET MAUI, JAVASCRIPT Electron // JAVASCRIPT Capacitor // JAVA J2EE // Microsoft .Net // Symfony // CakePHP // Yii // Android Studio // AppInventor</li>
-  </ul>
-
-  <h2>Aspiraciones</h2>
-  <p>Desarrollar soluciones Web y móviles que aumenten la productividad, aportanto mis conocimientos técnicos y mis aptitudes de liderazgo.</p>
-  <p>Continuar mi experiencia en supervisión y gerencia de proyectos.</p>
-  <p>Aportar mis conocimientos en manejo de ambientes de alta transaccionabilidad (bancos y entes fiscales).</p>
-  <p>Estar en un ambiente de oportunidades y crecimiento constante.</p>
-
-  <div>
-    <span class="badge">IA aplicada</span>
-    <span class="badge">Desarrollo Web</span>
-    <span class="badge">Servicios REST</span>
-    <span class="badge">XML/XSL/XSD</span>
-    <span class="badge">Android</span>
-    <span class="badge">iOS</span>
-    <span class="badge">Windows</span>
-    <span class="badge">Linux</span>
-    <span class="badge">Agilidad</span>
-  </div>
-
-  <h2>Experiencia laboral resumida</h2>
-  <p>
-    <strong>2017–2025:</strong> Coordinador I&D — Departamento de Web Services (TheFactoryHKA).  
-    Gestión de proyectos de facturación electrónica para <strong>Perú, Colombia, Panamá y Venezuela</strong>.
-  </p>
-  <p>
-    <strong>1999–2002 / 2008–2016:</strong> Analista de aplicaciones en BVC, Citibank, Banco Exterior, Banesco y Banco Industrial.
-  </p>
-  <p>
-    <strong>2003–2006:</strong> Analista de portales web en PDVSA.
-  </p>
-  <p>
-    Trabajos freelance para FarmaAhorro, Cenco-Zotti, Seguros Mercantil y HBO (Java, C#, BD).
-  </p>
-  <p>
-    <strong>Inicio laboral en 1993</strong> — Ministerio de Educación (UNIX System V, Informix).
-  </p>
-
-  <div>
-    <span class="badge">C/C++</span>
-    <span class="badge">Java</span>
-    <span class="badge">C#</span>
-    <span class="badge">UNIX/Windows</span>
-    <span class="badge">REST/SOAP</span>
-    <span class="badge">XML/XSD</span>
-    <span class="badge">JSON</span>
-    <span class="badge">MQSeries</span>
-  </div>
-
-  <h2>Portafolio resumido</h2>
-  <ul>
-    <li>
-      <strong>Libro diario electrónico:</strong>  
-      Aplicación Web (HTML/CSS/JS con IA) + versión APK Android (App Inventor).  
-      Demo: <a href="https://librocontable.vercel.app/Librodiario.html" target="_blank">https://librocontable.vercel.app/Librodiario.html</a>
-    </li>
-    <li>
-      <strong>Prototipo básico en BLAZOR:</strong><br>
-      Login básico de servicios médicos. Soporte básico de entrada y validación por sms. 
-      Guardado de credenciales e instalación multiplataforma. Demo:<br>
-      <a href="https://ramonquintero2904.github.io/aaa/ " target="_blank">https://ramonquintero2904.github.io/aaa/ </a>
-    </li>
-    <li>
-      <strong>Generación de contenidos:</strong><br>
-      Producción de contenido con IA generativa para YouTube (<em><a href="https://www.youtube.com/@MundoVirtualFM" target="_blank">https://www.youtube.com/@MundoVirtualFM</a></em>).<br>
-    </li>
-  </ul>
-
-  <div class="carousel-container">
-    <div class="carousel-title">Soportes y Certificaciones Destacadas</div>
-    <div class="carousel-track">
-            <div class="carousel-item">
-        <img src="titulo-fondo-negro.jpg" alt="Titulo Licenciado Computación UCV">
-        <p>Licenciado en computación (UCV)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="course-certificates-SCRUMstudy_Ramon Quintero.png" alt="Constancia SCRUMstudy">
-        <p>SCRUM fundamentals (SCRUMstudy)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="AVEPANE.jpg" alt="Diplomado AVEPANE">
-        <p>Diplomado en Facilitación (AVEPANE)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="IESA.jpg" alt="Constancia Curso equipos de alto desempeño">
-        <p>Equipos de alto desempeño (IESA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="ConstanciaHKA.jpeg" alt="Constancia HKA">
-        <p>Coordinador I&D (TheFactoryHKA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-docente-ucv.jpg" alt="Constancia Docente UCV">
-        <p>Docente Estructura de Datos (UCV)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-pdvsa.jpg" alt="Constancia PDVSA">
-        <p>Experiencia Analista Web (PDVSA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="SanFar.jpg" alt="Constancia SANFAR">
-        <p>Experiencia Especialista de desarrollo (SANFAR)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="sun-java.jpg" alt="Java Programming Language">
-        <p>Java Programming Language (Sun Microsystems)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="Sql-server-2000-admon.jpg" alt="Administering SQL Server 2000">
-        <p>2072 Administering Microsoft SQl Server 2000 Server DataBase (Microsoft)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="vb-NET.jpg" alt="Visual Basic .NET programming">
-        <p>2373 Programming with Microsoft Visual Basic .NET (Microsoft)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="pdvsa-pvcs.jpg" alt="Taller PVCS">
-        <p>Taller PVCS (PDVSA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="ALDON.jpg" alt="Taller Aldon LMe">
-        <p>Taller Aldon LMe / Desarrolladores</p>
-      </div>
-      <div class="carousel-item">
-        <img src="red-del-estado.jpg" alt="Certificado Redes del estado">
-        <p>Redes del estado (UNEFA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="banda-ancha.jpg" alt="Certificado Redes Banda Ancha">
-        <p>Redes de Banda Ancha (UCV)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="curso-c++-ucv.jpg" alt="Certificado Visual C++">
-        <p>Visual C++ (UCV)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="Cerrando-brechas.jpg" alt="Curso Cerrando Brechas PDVSA">
-        <p>Curso Organizando Redes (PDVSA)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="DE-BIV.jpg" alt="Curso Trabajo en equipo">
-        <p>Curso Trabajo en equipo (DE)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-biv.jpg" alt="Contrato Banco Industrial">
-        <p>Líder de Proyecto (Banco Industrial)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-eversystems.jpg" alt="Constancia EverSystems">
-        <p>Analista Programador (EverSystems)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-quinsoft.jpg" alt="Constancia QuinSoft">
-        <p>Analista Programador (QuinSoft)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-texunion.jpg" alt="Constancia TexUnion">
-        <p>Jefe Computación (TexUnion)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-santolo.jpg" alt="Constancia Santolo">
-        <p>Analista de sistemas  (Santolo)</p>
-      </div>
-      <div class="carousel-item">
-        <img src="constancia-punto-micro.jpg" alt="Constancia Punto Micro">
-        <p>Técnico de Microcomputadores</p>
-      </div>
-      <div class="carousel-item">
-        <img src="flash-intevep.jpg" alt="Constancia curso Macromedia Flash ">
-        <p>Macromedia Flash</p>
-      </div>
-      <div class="carousel-item">
-        <img src="Linux-Administracion-nivel-1.jpg" alt="Curso básico Administración LINUX ">
-        <p>Administracion LINUX básico</p>
-      </div>
-      <div class="carousel-item">
-        <img src="Linux-Administracion-avanzada.jpg" alt="Curso avanzado Administración LINUX ">
-        <p>Administracion LINUX avanzado</p>
-      </div>
-      <div class="carousel-item">
-        <img src="sap-portal.jpg" alt="Curso avanzado Administración LINUX ">
-        <p>EP 100 Managing Enterprise Portal Content</p>
-      </div>
-      <div class="carousel-item">
-        <img src="Websphere-portal-app-dev.jpg" alt="IBM WebSphere portal Applications Development ">
-        <p>IBM WebSphere portal Applications Development</p>
-      </div>
-      <div class="carousel-item">
-        <img src="websphere-portlet-dev.jpg" alt="IBM WebSphere portal Portlet Applications Development ">
-        <p>IBM WebSphere portal Portlet Applications Development</p>
-      </div>
-    </div>
-  </div>
-
-  <br><br>
-  <p class="center small">© Ramon Quintero — Mayo 2026 — Hoja de Vida</p>
 
 </body>
 </html>
